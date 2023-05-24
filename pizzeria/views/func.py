@@ -44,7 +44,7 @@ def sendmail(request, username, usermail):
     
 
 
-def genpdf(request, total, token):
+def genpdf(request, token):
 
         packet = io.BytesIO()
         can = canvas.Canvas(packet, pagesize=letter)
@@ -52,23 +52,17 @@ def genpdf(request, total, token):
 
         today = datetime.now().date()
 
-        can.drawString(22, 115, token)
-        can.drawString(80, 550, f"Ce document est valable jusqu'à {today}")
+        can.drawString(22, 20, f"Ce document est généré à cette date et est uniquement valable au même date: {today}")
+        can.drawString(80, 590, f"Ce document est valable jusqu'à {today}")
 
         can.setFont('Helvetica', 20)
-        can.drawString(80, 500, "Commande")
+        can.drawString(80, 520, f"N° de la commande> {token}")
 
         # can.setFont('Helvetica', 14)
         # can.drawString(95, 475, "1 - Pizza kebab")
         # can.drawString(95, 460, "2 - Pizza chèvre de miel")
 
-        can.setFont('Helvetica', 20)
-        can.drawString(245, 400, "Total payé")
-
-        can.setFont('Helvetica', 14)
-        can.drawString(245, 370, f"{total}€")
-
-        can.drawImage(f'{path}/qrcode/qrcode.png', 10, 10, 100, 100, mask='auto')
+        can.drawImage(f'{path}/qrcode/qrcode.png', 200, 250, 200, 200, mask='auto')
         can.save()
 
         # move to the beginning of the StringIO buffer
@@ -78,7 +72,7 @@ def genpdf(request, total, token):
         new_pdf = PdfFileReader(packet) 
 
         # read your existing PDF
-        existing_pdf = PdfFileReader(open(f"{path}/Boul.pdf", "rb"))
+        existing_pdf = PdfFileReader(open(f"{path}/recu/boul.ange.pdf", "rb"))
         output = PdfFileWriter()
 
         # add the "watermark" (which is the new pdf) on the existing page
@@ -87,7 +81,7 @@ def genpdf(request, total, token):
         output.addPage(page)
 
         # finally, write "output" to a real file
-        outputStream = open(f"{path}/recu{today}.pdf", "wb")
+        outputStream = open(f"{path}/recu/commandes/{today}-{token}.pdf", "wb")
         output.write(outputStream)
         outputStream.close()
 

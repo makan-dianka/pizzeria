@@ -5,6 +5,7 @@ pizzeria/migrations
 pizzeria/models/__pycache__
 pizzeria/views/__pycache__
 
+static/recu/commandes
 
 db.sqlite3
 .env

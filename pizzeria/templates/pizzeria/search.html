@@ -20,30 +20,27 @@
 
                 </div>
 
-                {% if orders %}
-                    {% for order in orders %}
+                {% if get_element %}
                         <div class="scomma"> 
                             <span id="pizza_rouge"> <strong>N° de la commande :</strong><br />
-                                    <span class="cmd-text" id="pizza_rouge">{{ order.number }}</span><br /><br />
+                                    <span class="cmd-text" id="pizza_rouge">{{ get_element.number }}</span><br /><br />
                             </span>
 
-                            <h1 class="text-cente" id="pizza_rouge">Nom: {{ order.username }}</h1>
-                            <p class="text-cente" id="pizza_rouge"> <strong>Mail:</strong> {{ order.useremail }}</p>
+                            <h1 class="text-cente" id="pizza_rouge">Nom: {{ get_element.username }}</h1>
+                            <p class="text-cente" id="pizza_rouge"> <strong>Mail:</strong> {{ get_element.useremail }}</p>
     
                             <span id="pizza_rouge"> <strong>Commandes :</strong><br />
-                                {% for food in order.fk_orderfood.all %}
+                                {% for food in get_element.fk_orderfood.all %}
                                     <span class="cmd-text" id="pizza_rouge">{{ food.quantite }} -- {{ food.food }}</span><br />
                                 {% endfor %}
                             </span>
                             <br />
-                            <p id="pizza_rouge"> <strong>commentaire :</strong> <br /> <span class="cmd-text">{{ order.commentaire }}</span></p>
-                            <p id="pizza_rouge"> <strong>Date :</strong> <br /> <span class="cmd-text">{{ order.create_at }}</span></p>
+                            <p id="pizza_rouge"> <strong>commentaire :</strong> <br /> <span class="cmd-text">{{ get_element.commentaire }}</span></p>
+                            <p id="pizza_rouge"> <strong>Date :</strong> <br /> <span class="cmd-text">{{ get_element.create_at }}</span></p>
                         </div> <br /> <br />
-                    {% endfor %}
                     <br /> <br /> <br /> <br /> <br /> <br /> <br /> <br />
                 {% else %}
-                    <h1 class="text-center" id="pizza_rouge">Les commandes s'afficheront ici</h1>
-                    <p style="margin-top: 25px; text-align: center; color: darkgray;">Il n'y a aucune commande pour le moment.</p>
+                    <p style="margin-top: 25px; text-align: center; color: red;">Aucune commande trouvé</p>
                 {% endif %}
             </div>
         </div>

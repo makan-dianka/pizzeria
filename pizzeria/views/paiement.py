@@ -48,7 +48,7 @@ def paiement(request):
             commande.save()
 
             func.qrcode(request, token)
-            func.genpdf(request, amount, token)
+            func.genpdf(request, token)
             # func.sendmail(request, name, email)
 
             ids = [product['id'] for product in request.session['selection']]
