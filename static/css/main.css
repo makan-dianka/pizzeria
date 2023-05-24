@@ -139,6 +139,11 @@
     padding: 10px;
 }
 
+.orders{
+    background: green;
+    padding: 10px;
+}
+
 .select-order{
     margin-top: 200px;
     box-shadow: 1px 3px 5px;
