@@ -10,6 +10,8 @@ from django.contrib.auth import(
                             )
 
 def connexion(request):
+    if request.user.is_authenticated:
+        return redirect('pizzeria:orders')
     if request.method == 'POST':
         username = request.POST.get('username')
         password = request.POST.get('password')
