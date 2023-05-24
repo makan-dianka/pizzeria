@@ -11,7 +11,7 @@
 {% block content %}
     <section>
         <div class="container">
-            <div class="commande">
+            <div class="commande row justify-content-center">
                 <div class="col-md-3">
                     <form action="" method="post">{% csrf_token %}
                         <input required type="text" name="cmdnumber" placeholder="écrivez le numero de la commande" class="form-control col-3"><br />
@@ -21,23 +21,23 @@
                 </div>
 
                 {% if get_element %}
-                        <div class="scomma"> 
-                            <span id="pizza_rouge"> <strong>N° de la commande :</strong><br />
-                                    <span class="cmd-text" id="pizza_rouge">{{ get_element.number }}</span><br /><br />
-                            </span>
+                    <div class="orders-el"> 
+                        <span id="pizza_rouge"> <strong>N° de la commande :</strong><br />
+                                <span class="cmd-text" id="pizza_rouge">{{ get_element.number }}</span><br /><br />
+                        </span>
 
-                            <h1 class="text-cente" id="pizza_rouge">Nom: {{ get_element.username }}</h1>
-                            <p class="text-cente" id="pizza_rouge"> <strong>Mail:</strong> {{ get_element.useremail }}</p>
-    
-                            <span id="pizza_rouge"> <strong>Commandes :</strong><br />
-                                {% for food in get_element.fk_orderfood.all %}
-                                    <span class="cmd-text" id="pizza_rouge">{{ food.quantite }} -- {{ food.food }}</span><br />
-                                {% endfor %}
-                            </span>
-                            <br />
-                            <p id="pizza_rouge"> <strong>commentaire :</strong> <br /> <span class="cmd-text">{{ get_element.commentaire }}</span></p>
-                            <p id="pizza_rouge"> <strong>Date :</strong> <br /> <span class="cmd-text">{{ get_element.create_at }}</span></p>
-                        </div> <br /> <br />
+                        <h1 class="text-cente" id="pizza_rouge">Nom: {{ get_element.username }}</h1>
+                        <p class="text-cente" id="pizza_rouge"> <strong>Mail:</strong> {{ get_element.useremail }}</p>
+
+                        <span id="pizza_rouge"> <strong>Commandes :</strong><br />
+                            {% for food in get_element.fk_orderfood.all %}
+                                <span class="cmd-text" id="pizza_rouge">{{ food.quantite }} -- {{ food.food }}</span><br />
+                            {% endfor %}
+                        </span>
+                        <br />
+                        <p id="pizza_rouge"> <strong>commentaire :</strong> <br /> <span class="cmd-text">{{ get_element.commentaire }}</span></p>
+                        <p id="pizza_rouge"> <strong>Date :</strong> <br /> <span class="cmd-text">{{ get_element.create_at }}</span></p>
+                    </div> <br /> <br />
                     <br /> <br /> <br /> <br /> <br /> <br /> <br /> <br />
                 {% else %}
                     <p style="margin-top: 25px; text-align: center; color: red;">Aucune commande trouvé</p>
@@ -45,4 +45,7 @@
             </div>
         </div>
     </section>
+
+</div> <br /> <br />
+<br /> <br /> <br /> <br /> <br /> <br /> <br /> <br />
 {% endblock %}

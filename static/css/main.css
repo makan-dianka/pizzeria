@@ -144,6 +144,15 @@
     padding: 10px;
 }
 
+.orders-el{
+    background: green;
+    color: whitesmoke;
+    border-radius: 35px;
+    padding: 20px;
+}
+
+
+
 .select-order{
     margin-top: 200px;
     box-shadow: 1px 3px 5px;

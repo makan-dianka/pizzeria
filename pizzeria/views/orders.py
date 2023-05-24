@@ -5,8 +5,7 @@ from django.contrib.auth.decorators import login_required
 
 @login_required(login_url='accounts:connexion')
 def orders(request):
-    orders = Commande.objects.all()
-    context = {"orders" : orders}
+    context = {}
     if request.method=="POST":
         try:
             search = Commande.objects.get(number=request.POST.get("cmdnumber").strip())

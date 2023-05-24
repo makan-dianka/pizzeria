@@ -11,40 +11,13 @@
 {% block content %}
     <section>
         <div class="container">
-            <div class="commande">
+            <div class="commande row justify-content-center">
                 <div class="col-md-3">
                     <form action="" method="post">{% csrf_token %}
                         <input required type="text" name="cmdnumber" placeholder="écrivez le numero de la commande" class="form-control col-3"><br />
                         <button class="btn btn-primary">Rechercher</button> <br /><br />
                     </form>
-
                 </div>
-
-                {% if orders %}
-                    {% for order in orders %}
-                        <div class="scomma"> 
-                            <span id="pizza_rouge"> <strong>N° de la commande :</strong><br />
-                                    <span class="cmd-text" id="pizza_rouge">{{ order.number }}</span><br /><br />
-                            </span>
-
-                            <h1 class="text-cente" id="pizza_rouge">Nom: {{ order.username }}</h1>
-                            <p class="text-cente" id="pizza_rouge"> <strong>Mail:</strong> {{ order.useremail }}</p>
-    
-                            <span id="pizza_rouge"> <strong>Commandes :</strong><br />
-                                {% for food in order.fk_orderfood.all %}
-                                    <span class="cmd-text" id="pizza_rouge">{{ food.quantite }} -- {{ food.food }}</span><br />
-                                {% endfor %}
-                            </span>
-                            <br />
-                            <p id="pizza_rouge"> <strong>commentaire :</strong> <br /> <span class="cmd-text">{{ order.commentaire }}</span></p>
-                            <p id="pizza_rouge"> <strong>Date :</strong> <br /> <span class="cmd-text">{{ order.create_at }}</span></p>
-                        </div> <br /> <br />
-                    {% endfor %}
-                    <br /> <br /> <br /> <br /> <br /> <br /> <br /> <br />
-                {% else %}
-                    <h1 class="text-center" id="pizza_rouge">Les commandes s'afficheront ici</h1>
-                    <p style="margin-top: 25px; text-align: center; color: darkgray;">Il n'y a aucune commande pour le moment.</p>
-                {% endif %}
             </div>
         </div>
     </section>
