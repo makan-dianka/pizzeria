@@ -1,0 +1,68 @@
+{% extends 'pizzeria/layout/base.html' %} {% load static %}
+
+{% block header %}
+    <header>
+        <div style="margin-top: 150px;">
+
+        </div>
+    </header>
+{% endblock %}
+
+{% block content %}
+    <section>
+        <div class="container">
+            <div class="rpanier">
+                {% if session > 0 %}
+                    <h1 class="text-center" id="pizza_rouge">Panier, {{ request.session.selection|length }} command(s)</h1>
+                {% else %}
+                    <h1 class="text-center" id="pizza_rouge">Votre panier est vide pour le moment.</h1>
+                    <p style="margin-top: 25px; text-align: center; color: darkgray;">Les éléments ajouté à votre panier s'afficheront ici.</p>
+                {% endif %}
+                {% if session > 0 %}
+                    <p class="text-center">Total à payer 
+                        <span id="total">{{ request.session.total }}€</span>
+                    </p>
+                {% endif %}
+            </div>
+            <div class="row justify-content-center">
+                {% for selection in request.session.selection %}
+                    <div class="col-md-3 card m-2">
+                            <div class="card-body info-card">
+                                <img src="{{ selection.photo }}" alt="{{ selection.nom }}" height="250" width="250" class="img-fluid card-img-top">
+                                <h3 class="card-title">{{ selection.nom }}</h3>
+                                <p class="card-subtitle mb-2 text-muted">{{ selection.desc }}</p>
+                                <h6 class="card-text mt-5">Prix : {{ selection.prix }}€</h6>
+                                <br /> <br />
+
+                                <form action="" method="post">{% csrf_token %}
+                                    <input type="hidden" value="{{ selection.id }}" name="id">
+                                    <button type="submit" class="favorite btn">
+                                        <img src="{% static 'img/delete.svg' %}" width="25" height="25" alt="supprimer" title="Supprimer dans le panier"> <br />
+                                        <!-- <span>Ajouter dans le panier</span> -->
+                                    </button>
+                                </form>
+                            </div>
+                        </div>
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+    {% if session > 0 %}
+        <section>
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-md-3 mt-5 btn-paie">
+                        <h3>Total {{ request.session.total }}€</h3>
+                        <a href="{% url 'pizzeria:paiement' %}" class="btn btn-success btn-lg justify-content-center">
+                            Passer la commande
+                        </a>
+                        <br /> <br />
+                        <a href="{% url 'pizzeria:food' %}#pizza_rouge" class="btn btn-primary btn-lg justify-content-center">
+                            Continuer vos achats
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    {% endif %}
+{% endblock %}

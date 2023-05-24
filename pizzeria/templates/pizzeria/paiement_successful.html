@@ -1,0 +1,34 @@
+{% extends 'pizzeria/layout/base.html' %} {% load static %}
+
+{% block head %}
+    <link rel="stylesheet" href="{% static 'css/paiement.css' %}" />
+    <script src="{% static 'js/paiement.js' %}"></script>
+{% endblock %}
+
+{% block header %}
+    <header>
+        <div style="margin-top: 150px;">
+
+        </div>
+    </header>
+{% endblock %}
+
+
+
+{% block content %}
+    <section>
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-md-6 m-2">
+                    <span class="">
+                        <img src="{% static 'img/done.svg' %}" width="25" height="25" alt="paiement succès" title="Paiement confirmé">
+                        <span class="text-success">Paiement confirmé</span> <br /> <br />
+
+                        <h3>Votre commande a bien été prise en compte</h3>
+                        <p>un mail de confirmation vient de vous être envoyé</p>
+                    </span>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}

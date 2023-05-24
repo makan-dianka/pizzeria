@@ -1,0 +1,10 @@
+boulange/__pycache__
+pizzeria/__pycache__
+pizzeria/migrations
+
+pizzeria/models/__pycache__
+pizzeria/views/__pycache__
+static/
+
+db.sqlite3
+.env

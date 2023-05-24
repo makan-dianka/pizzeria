@@ -1,0 +1,54 @@
+{% extends 'pizzeria/layout/base.html' %} {% load static %}
+
+{% block content %}
+    <main>
+        <section class="sec1">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12 mt-5 text-center pizz">
+                        <h5>Pizzeria pour livraison ou vente à emporter à Montpellier</h5>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6 presentation-text">
+                       <h4>Livraison de Pizza Napolitaine ouvert du lundi au Samedi uniquement le soir et à emporter le midi</h4> 
+                       <p>Pizza Delizia, un savoir faire,</p>
+                       <p>Notre pâte est faite 100% maison et façonnée à la main dans la pure tradition napolitaine, nous utilisons des produits de grande qualité comme la farine italienne, la Mozzarella Fiore Di latte en provenance directe d'Italie, La sauce tomate est cuisinée à l’huile d’olive, au basilic frais et à l’origan des produits frais que nous réalisons sur place, tout cela pour vous donner un maximum de plaisir en dégustant votre pizza.</p>
+                       <p>Nos pizzas sont réalisées uniquement au moment de leur commande avec une qualité égale, que ce soit en livraison, à emporter ou sur place.
+                        Une remise en question au quotidien du pizzaïolo à parfaire sa technique de travail et sa créativité.</p>
+                       <p>Savourez nos produits depuis le confort de votre domicile grâce à notre service de livraison gratuite.</p>
+                       <p>Nous livrons aux Arceaux, Boutonnet, Hôpitaux Faculté, Euromedecine, Malbosc, Triolet, Saint Priest, Père Soulas, Occitanie...  </p>
+                       <p>Qualité et authenticité d'une cuisine italienne traditionnelle.</p>
+                       <p>Alors à bientôt et bon appétit !</p>
+                       <hr class="hr-bar"/>
+                    </div>
+                    <div class="col-md-6 presentation-img">
+                       <img src="{% static 'img/side2.jpg' %}" alt="farine" height="350" width="550" class="img-fluid">
+                       <img src="{% static 'img/side1.jpg' %}" alt="farine" height="350" width="550" class="img-fluid mt-5">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="sec2 decouvrez">
+            <div class="container">
+                <div class="row justify-content-center middle-red">
+                    <h1>Nos formulaires du moment</h1>
+                    <div class="col-md-6">
+                        <img src="{% static 'img/formule.jpg' %}" alt="plate" height="250" width="600" class="img-fluid">
+                    </div>
+                    <div class="col-md-6 best-pizza">
+                        <h2>Meilleure Pizza de Montpellier</h2>
+                        <p>Pizzeria dans la centre de Montpellier, près de la comédie.</p>
+                        <p>Manger sur place ou emporter. Paiement par carte accepté.</p>
+                        <address>
+                            4 Rue Aristide Ollivier, Montpellier 34000
+                        </address>
+                        <p>Tel : 04 48 18 03 07</p>
+                       <a href="{% url 'pizzeria:food' %}"><button type="button" class="btn btn-outline-warning btn-lg btn-block btn-decouv">Découvrir</button></a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+{% endblock %}

@@ -1,0 +1,38 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Email de confirmation</title>
+</head>
+<body>
+    <header>
+        <header>
+            <div id="carouselExampleSlidesOnly" class="carousel slide" data-ride="carousel" data-bs-interval="3000">
+                <div class="carousel-inner">
+                    <div class="carousel-item active">
+                        <img class="d-block w-100 pizza-header-photo" src="{% static 'img/page_pizza.jpg' %}" height="700" alt="Sourire de nos personnel">
+                    </div>
+                </div>
+            </div>
+        </header>
+    </header>
+
+    <main>
+        <section>
+            <div>
+                <h2>Bonjour {{username}}</h2>
+                <h4>Merci d'avoir commandé chez nous.</h4>
+                <p>Ceci est un mail de confirmation de votre commande. Votre reçu est en document attaché.</p>
+                <p>--</p>
+                <p>Retrouvez nos délicieuses pizza à tout moment sur notre site <a href="{{ protocol }}{{ host }}">{{ protocol }}{{ host }}</a></p><br />
+                <p style="color: green;">A très bientôt</p>
+                <p>Cordialement,<br />Boul.ange</p> 
+            </div>
+        </section>
+    </main>
+</body>
+</html>

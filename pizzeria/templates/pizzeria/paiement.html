@@ -1,0 +1,68 @@
+{% extends 'pizzeria/layout/base.html' %} {% load static %}
+
+{% block head %}
+    <link rel="stylesheet" href="{% static 'css/paiement.css' %}" />
+    <script src="{% static 'js/paiement.js' %}"></script>
+{% endblock %}
+
+{% block header %}
+    <header>
+        <div style="margin-top: 150px;">
+
+        </div>
+    </header>
+{% endblock %}
+
+{% block content %}
+    <section>
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-md-6 m-2">
+                    <span class="paiement-p text-center">
+                        <h5>Total à payer</h5>
+                        <h1>{{ request.session.total }}€</h1>
+                    </span>
+
+                    {% if card_error %} 
+                        <p class="text-danger">Le paiement n'a pas pu être abouti.</p> 
+                        <p class="text-danger">suite à cette erreur : {{ card_error }}</p> 
+                    {% endif %}
+                    <form id="payment-form" method="post" action="{% url 'pizzeria:paiement' %}">{% csrf_token %}
+                        <input type="hidden" id="input">
+
+                        <label for="name">Nom *</label>
+                        <input required type="text" name="name" placeholder="Nom sur la carte" class="form-control"> <br />
+
+                        <label for="email">Email *</label>
+                        <input required type="email" name="email" placeholder="Votre email" class="form-control"> <br /><br />
+                        
+                        <label for="commentaire" class="commentaire" id="commentaire">Commentaire (facultatif)</label>
+                        <textarea class="form-control" name="commentaire" id="commentaire" placeholder="avez vous un commentaire à ajouter à votre commande ? Si vous avez une demande particulière, veuillez l'écrire ici." cols="30" rows="5"></textarea><br /><br />
+
+                        {% if card_error %}
+                            <p class="text-danger">Le paiement n'a pas pu être abouti.</p> 
+                            <p class="text-danger">suite à cette erreur : {{ card_error }}</p> 
+                        {% endif %}
+
+                        <label>Carte *</label>
+                        <div id="card-element" class="form-control">
+                        <!-- Elements will create input elements here -->
+                        </div>
+                    
+                        <!-- We'll put the error messages in this element -->
+                        <div id="card-errors" role="alert" class="text-danger"></div>
+                        
+                        <button type="submit" class="btn btn-success btn-lg btn-payer">Payer</button>
+
+                        <br /><br /> <br /> <br /> <br />
+                        <br /><br /> <br /> <br /> <br />
+                        <br /><br /> <br /> <br /> <br />
+
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script src="https://js.stripe.com/v3/"></script>
+{% endblock %}
