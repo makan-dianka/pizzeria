@@ -11,7 +11,8 @@ accounts/migrations
 accounts/models/__pycache__
 accounts/views/__pycache__
 
-static/recu/commandes
+static/recu/commandes/*.pdf
+static/qrcode/*.png
 
 db.sqlite3
 .env

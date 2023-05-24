@@ -69,6 +69,5 @@ def paiement(request):
             request.session.modified = True 
             del request.session['total']
             request.session.modified = True
-
-            return redirect("/success")
+            return render(request, 'pizzeria/paiement_successful.html')
     return render(request, 'pizzeria/paiement.html', context)
