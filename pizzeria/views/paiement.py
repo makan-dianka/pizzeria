@@ -49,7 +49,7 @@ def paiement(request):
 
             func.qrcode(request, token)
             func.genpdf(request, token)
-            # func.sendmail(request, name, email)
+            func.sendmail(request, name, email, token)
 
             ids = [product['id'] for product in request.session['selection']]
             check = []

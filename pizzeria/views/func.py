@@ -21,9 +21,9 @@ import random
 
 
 path = f"{settings.STATICFILES_DIRS[0]}"
+today = datetime.now().date()
 
-
-def sendmail(request, username, usermail):
+def sendmail(request, username, usermail, token):
     host = request.META.get('HTTP_HOST')
     info = {
         'username' : username,
@@ -37,9 +37,12 @@ def sendmail(request, username, usermail):
     email.content_subtype = "html"
     email.fail_silently = False
     try:
+        attach = f"{path}/recu/commandes/{today}_{token}.pdf"
+        email.attach_file(attach)
         email.send()
         return "OK mail sent success"
     except Exception as e:
+        print(e)
         return "Fail to send mail"
     
 
@@ -49,8 +52,6 @@ def genpdf(request, token):
         packet = io.BytesIO()
         can = canvas.Canvas(packet, pagesize=letter)
         can.setFont('Helvetica', 12)
-
-        today = datetime.now().date()
 
         can.drawString(22, 20, f"Ce document est généré à cette date et est uniquement valable au même date: {today}")
         can.drawString(80, 590, f"Ce document est valable jusqu'à {today}")
@@ -81,7 +82,7 @@ def genpdf(request, token):
         output.addPage(page)
 
         # finally, write "output" to a real file
-        outputStream = open(f"{path}/recu/commandes/{today}-{token}.pdf", "wb")
+        outputStream = open(f"{path}/recu/commandes/{today}_{token}.pdf", "wb")
         output.write(outputStream)
         outputStream.close()
 
