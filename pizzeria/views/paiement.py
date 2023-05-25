@@ -21,13 +21,13 @@ def paiement(request):
                 source=stripeToken,
             )
 
-        amount = int(request.session['total'])
+        amount = int(request.session['total'] * 100)
 
         try:
             # Charge card 
             stripe.Charge.create(
                 customer=customer,
-                amount=amount*100,
+                amount=amount,
                 currency='eur',
                 description="Pizzeria Boul.ange"
             )
