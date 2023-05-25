@@ -3,6 +3,10 @@ pizzeria/__pycache__
 pizzeria/migrations
 pizzeria/fixtures/*.json
 
+cert.crt
+cert.key
+ssl/*.pem
+
 pizzeria/models/__pycache__
 pizzeria/views/__pycache__
 

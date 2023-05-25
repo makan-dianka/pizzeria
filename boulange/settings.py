@@ -43,6 +43,8 @@ INSTALLED_APPS = [
 
     'pizzeria',
     'accounts',
+
+    "django_extensions",
 ]
 
 MIDDLEWARE = [
