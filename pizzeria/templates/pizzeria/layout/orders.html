@@ -19,6 +19,7 @@
             <div class="collapse navbar-collapse" id="navbarResponsive">
                 <ul class="navbar-nav ms-auto my-2 my-lg-0">
                     {% if request.user.is_authenticated %}
+                        <li class="nav-item"><a class="nav-link" href="{% url 'pizzeria:orders' %}">Commandes</a></li>
                         <li class="nav-item"><a class="nav-link" href="{% url 'accounts:deconnexion' %}">Déconnexion</a></li>
                     {% else %}
                         <li class="nav-item"><a class="nav-link" href="{% url 'accounts:connexion' %}">Connexion</a></li>
