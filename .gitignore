@@ -1,6 +1,7 @@
 boulange/__pycache__
 pizzeria/__pycache__
 pizzeria/migrations
+pizzeria/fixtures/*.json
 
 pizzeria/models/__pycache__
 pizzeria/views/__pycache__
