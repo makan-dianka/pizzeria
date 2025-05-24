@@ -8,8 +8,8 @@ app_name = "pizzeria"
 
 urlpatterns = [
     path('', index.index, name="index"),
-    path('formules', food.food, name="food"),
-    path('panier', panier.panier, name="panier"),
-    path('paiement', paiement.paiement, name="paiement"),
-    path('orders', orders.orders, name="orders"),
+    path('formules/', food.food, name="food"),
+    path('panier/', panier.panier, name="panier"),
+    path('paiement/', paiement.paiement, name="paiement"),
+    path('orders/', orders.orders, name="orders"),
 ]
