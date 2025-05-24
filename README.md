@@ -1,18 +1,21 @@
 # pizzeria
+
 application pizzeria et commande en ligne avec stripe.
 paiement stripe personnalisé
 
 ## pre-requis
+
 - docker
 - docker-compose
 - un compte stripe
 
-## installation 
-```git clone https://github.com/makan-dianka/pizzeria.git```
+## installation
 
-```cd pizzeria```
+`git clone https://github.com/makan-dianka/pizzeria.git`
 
-Créer le .env ```touch .env```
+`cd pizzeria`
+
+Créer le .env `touch .env`
 
 ajouter ces variables d'environnement
 
@@ -32,4 +35,12 @@ ALLOWED_HOST_PROD="changeme"
 
 ## Demarrer l'application
 
-```docker-compose --env-file .env up```
+`docker-compose --env-file .env up`
+
+## Faire la migration
+
+```
+docker exec pizzeria python manage.py makemigrations accounts pizzeria
+
+docker exec pizzeria python manage.py migrate
+```
