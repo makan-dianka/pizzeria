@@ -44,3 +44,9 @@ docker exec pizzeria python manage.py makemigrations accounts pizzeria
 
 docker exec pizzeria python manage.py migrate
 ```
+
+## Voir UI
+
+ouvrir un navigateur et aller à
+
+`http://127.0.0.1:8000/`
